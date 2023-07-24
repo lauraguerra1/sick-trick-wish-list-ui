@@ -15,6 +15,10 @@ const Form = ({updateTricks}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     updateTricks({id: nanoid(), stance, name: trickName, obstacle, tutorial})
+    setStance('');
+    setTrickName('');
+    setObstacle('');
+    setTutorial('');
   }
 
   return (
