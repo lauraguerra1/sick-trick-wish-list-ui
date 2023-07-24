@@ -2,7 +2,7 @@ import { useState } from "react";
 import { nanoid } from "nanoid";
 import './Form.css';
 
-const Form = ({updateTricks}) => {
+const Form = ({addTrick}) => {
   const [stance, setStance] = useState('');
   const [trickName, setTrickName] = useState('');
   const [obstacle, setObstacle] = useState('');
@@ -14,7 +14,7 @@ const Form = ({updateTricks}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    updateTricks({id: nanoid(), stance, name: trickName, obstacle, tutorial})
+    addTrick({id: nanoid(), stance, name: trickName, obstacle, tutorial})
     setStance('');
     setTrickName('');
     setObstacle('');

@@ -12,4 +12,17 @@ const getAllTricks = async() => {
   return data
 }
 
-export {getAllTricks}
+const postTrick = async(newTrick) => {
+  const response = await fetch('http://localhost:3001/api/v1/tricks', {
+    method: 'POST', 
+    body: JSON.stringify(newTrick),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+
+  let data = await parseError(response)
+  return data
+}
+
+export {getAllTricks, postTrick}

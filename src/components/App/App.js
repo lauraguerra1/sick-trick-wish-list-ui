@@ -1,11 +1,12 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
-import { getAllTricks } from '../../apiCalls';
+import { getAllTricks, postTrick } from '../../apiCalls';
 import TricksBox from '../TricksBox/TricksBox';
 import Form from '../Form/Form'
 
 function App() {
   const [tricks, setTricks] = useState([]);
+  const [newTrick, setNewTrick] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -25,11 +26,25 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (tricks.length) console.log(tricks)
-  }, [tricks])
+    const callAPI = async (newTrick) => {
+      setLoading(true);
+      try {
+        const additionalTrick = await postTrick(newTrick)
+        setTricks(prevTricks => [...prevTricks, additionalTrick]);
+        setLoading(false);
+      } catch (error) {
+        setError(error);
+        setLoading(false);
+      }
+    };
 
-  const updateTricks = (newTrick) => {
-    setTricks(prevTricks => [...prevTricks, newTrick])
+    if (newTrick) {
+      callAPI(newTrick)
+    }
+  }, [newTrick])
+
+  const addTrick = (newTrick) => {
+    setNewTrick(newTrick)
   }
 
   return (
@@ -39,7 +54,7 @@ function App() {
         {loading && <h2 style={{ color: 'red' }}>Loading...</h2>}
         {error && <h2 style={{ color: 'red' }}>{error.message}</h2>}
       </div>
-      <Form updateTricks={updateTricks}/>
+      <Form addTrick={addTrick}/>
       <TricksBox tricks={tricks} />
     </main>
   );
