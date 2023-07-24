@@ -1,3 +1,5 @@
+import { useState } from "react"
+
 const Form = () => {
   const [stance, setStance] = useState('')
   const [trickName, setTrickName] = useState('')
@@ -10,7 +12,7 @@ const Form = () => {
   
   return (
     <form>
-      <select onChange={() => handleChange(e.target.value, setStance)}>
+      <select onChange={(e) => handleChange(e.target.value, setStance)}>
         <option value='regular'>Regular</option>
         <option value='switch'>Switch</option>
       </select>
