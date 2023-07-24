@@ -9,7 +9,7 @@ describe('empty spec', () => {
       statusCode: 200,
       fixture: 'newTrick.json'
     }).as('postTrick')
-    
+
     cy.visit('http://localhost:3000')
 
 
@@ -51,11 +51,13 @@ describe('empty spec', () => {
         .get('select').last().select('stairs')
         .get('input[type="text"]').last().type('www.example.com')
         .get('button').contains('Send it!').click()
-        .get('.tricks-box').children().should('have.length', 4)
-        .get('.single-trick').last().contains('p', 'regular new trick')
-        .get('.single-trick').last().contains('p', 'Obstacle: stairs')
-        .get('.single-trick').last().contains('p', 'Link to tutorial:')
-        .get('.single-trick').last().contains('a', 'www.example.com')
+        cy.wait('@postTrick').then((interception) => {
+          cy.get('.tricks-box').children().should('have.length', 4)
+            .get('.single-trick').last().contains('p', 'regular new trick')
+            .get('.single-trick').last().contains('p', 'Obstacle: stairs')
+            .get('.single-trick').last().contains('p', 'Link to tutorial:')
+            .get('.single-trick').last().contains('a', 'www.example.com')
+        })
       })
   })
 })
