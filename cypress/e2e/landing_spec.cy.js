@@ -4,7 +4,15 @@ describe('empty spec', () => {
       statusCode: 200,
       fixture: 'tricks.json'
     }).as('getTricks')
+
+    cy.intercept("POST", "http://localhost:3001/api/v1/tricks", {
+      statusCode: 200,
+      fixture: 'newTrick.json'
+    }).as('postTrick')
+    
     cy.visit('http://localhost:3000')
+
+
   })
   
   it('should display tricks and a form when the page loads', () => {

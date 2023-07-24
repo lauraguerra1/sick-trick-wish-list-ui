@@ -32,6 +32,7 @@ function App() {
         const additionalTrick = await postTrick(newTrick)
         setTricks(prevTricks => [...prevTricks, additionalTrick]);
         setLoading(false);
+        setNewTrick('');
       } catch (error) {
         setError(error);
         setLoading(false);
@@ -39,6 +40,7 @@ function App() {
     };
 
     if (newTrick) {
+      console.log(newTrick)
       callAPI(newTrick)
     }
   }, [newTrick])
