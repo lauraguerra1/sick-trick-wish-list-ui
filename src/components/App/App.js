@@ -40,7 +40,6 @@ function App() {
     };
 
     if (newTrick) {
-      console.log(newTrick)
       callAPI(newTrick)
     }
   }, [newTrick])
