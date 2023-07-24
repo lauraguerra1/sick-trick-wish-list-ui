@@ -24,6 +24,10 @@ function App() {
     callAPI();
   }, []);
 
+  useEffect(() => {
+    if (tricks.length) console.log(tricks)
+  }, [tricks])
+
   const updateTricks = (newTrick) => {
     setTricks(prevTricks => [...prevTricks, newTrick])
   }
