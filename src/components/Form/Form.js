@@ -1,18 +1,24 @@
-import { useState } from "react"
-import './Form.css'
+import { useState } from "react";
+import { nanoid } from "nanoid";
+import './Form.css';
 
-const Form = () => {
-  const [stance, setStance] = useState('')
-  const [trickName, setTrickName] = useState('')
-  const [obstacle, setObstacle] = useState('')
-  const [tutorial, setTutorial] = useState('')
+const Form = ({updateTricks}) => {
+  const [stance, setStance] = useState('');
+  const [trickName, setTrickName] = useState('');
+  const [obstacle, setObstacle] = useState('');
+  const [tutorial, setTutorial] = useState('');
 
   const handleChange = (value, setter) => {
-    setter(value)
+    setter(value);
   }
-  
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    updateTricks({id: nanoid(), stance, name: trickName, obstacle, tutorial})
+  }
+
   return (
-    <form onSubmit={(e) => {}}>
+    <form onSubmit={handleSubmit}>
       <select value={stance} className='form-piece' onChange={(e) => handleChange(e.target.value, setStance)} required>
         <option value=''>Choose your Stance </option>
         <option value='regular'>Regular</option>

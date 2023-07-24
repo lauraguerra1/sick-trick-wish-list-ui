@@ -24,6 +24,10 @@ function App() {
     callAPI();
   }, []);
 
+  const updateTricks = (newTrick) => {
+    setTricks(prevTricks => [...prevTricks, newTrick])
+  }
+
   return (
     <main>
       <div className="App">
@@ -31,7 +35,7 @@ function App() {
         {loading && <h2 style={{ color: 'red' }}>Loading...</h2>}
         {error && <h2 style={{ color: 'red' }}>{error.message}</h2>}
       </div>
-      <Form />
+      <Form updateTricks={updateTricks}/>
       <TricksBox tricks={tricks} />
     </main>
   );
