@@ -19,4 +19,12 @@ h1 {
   margin-bottom: 240px;
 }
 
+main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+
 

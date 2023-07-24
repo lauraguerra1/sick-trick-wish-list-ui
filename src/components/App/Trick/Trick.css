@@ -1,0 +1,14 @@
+.single-trick {
+  background-color: #eff9ff;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1%;
+  padding: 1%;
+}
+
+.single-trick > p {
+  margin: 2%;
+}

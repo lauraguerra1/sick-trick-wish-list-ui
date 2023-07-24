@@ -1,7 +1,6 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
 import { getAllTricks } from '../../apiCalls';
-import Trick from './Trick/Trick';
 import TricksBox from './TricksBox/TricksBox';
 
 
@@ -23,7 +22,6 @@ function App() {
     }
 
     callAPI()
-    console.log(tricks)
   }, [])
 
   return (
@@ -33,7 +31,7 @@ function App() {
           {loading && <h2 style={{color: "red"}}>Loading...</h2>}
           {error && <h2 style={{color: "red"}}>{error.message}</h2>}
         </div>
-      <TricksBox/>
+      <TricksBox tricks={tricks}/>
     </main>
   );
 }
