@@ -23,12 +23,22 @@ describe('empty spec', () => {
       })
   })
 
-  it('should reflect values input into form')
+  it('should reflect values input into form', () => {
+    cy.wait('@getTricks').then((interception) => {
+      cy.get('select').first().select('regular')
+        .get('select').first().should('have.value', 'regular')
+        .get('input[type="text"]').first().type('new trick')
+        .get('input[type="text"]').first().should('have.value', 'new trick')
+        .get('select').last().select('stairs')
+        .get('select').last().should('have.value', 'stairs')
+        .get('input[type="text"]').last().type('www.example.com')
+        .get('input[type="text"]').last().should('have.value', 'www.example.com')
+      })
+  })
 
   it('should display a new trick after adding it via the form', () => {
     cy.wait('@getTricks').then((interception) => {
-      cy.get('h1').contains('Sick Trick Wish List')
-        .get('select').first().select('regular')
+      cy.get('select').first().select('regular')
         .get('input[type="text"]').first().type('new trick')
         .get('select').last().select('stairs')
         .get('input[type="text"]').last().type('www.example.com')
