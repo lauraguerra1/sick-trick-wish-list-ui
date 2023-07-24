@@ -31,6 +31,7 @@ function App() {
         {loading && <h2 style={{ color: 'red' }}>Loading...</h2>}
         {error && <h2 style={{ color: 'red' }}>{error.message}</h2>}
       </div>
+      <Form />
       <TricksBox tricks={tricks} />
     </main>
   );

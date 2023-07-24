@@ -1,0 +1,22 @@
+form {
+  width: 100%;
+  display: flex; 
+  justify-content: center;;
+}
+.form-piece {
+  height: 50px;
+  border-radius: 15px;
+  margin: 1%;
+}
+
+.form-input {
+  height: 48px;
+  padding: 0px 0px 0px 5px 
+}
+
+button {
+  background-color: #eff9ff;
+  border: none;
+  width: 80px;
+  cursor: pointer;
+}
