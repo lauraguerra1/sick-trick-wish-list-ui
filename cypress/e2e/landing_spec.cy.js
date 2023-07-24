@@ -1,4 +1,4 @@
-describe('empty spec', () => {
+describe('landing page spec', () => {
   beforeEach(() => {
     cy.intercept("GET", "http://localhost:3001/api/v1/tricks", {
       statusCode: 200,
